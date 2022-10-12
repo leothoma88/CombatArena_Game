@@ -1,1 +1,2 @@
--- Create tables
+DROP DATABASE IF EXISTS arena_db;
+CREATE DATABASE arena_db;
