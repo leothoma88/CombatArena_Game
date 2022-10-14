@@ -1,5 +1,13 @@
 var container = document.querySelector(".text");
 
+
+
+
+
+
+
+//Event listener button on login or START BUTTON
+
 var speeds = {
    pause: 500, //Higher number = longer delay
    slow: 120,
