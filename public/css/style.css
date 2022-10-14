@@ -1,0 +1,100 @@
+body{
+   background-image: ".";
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 95%;
+  }
+
+  .text span {
+    opacity: 0;
+ }
+ .text span.revealed {
+    opacity: 1;
+ }
+ .text span.green {
+    color: #27ae60;
+ }
+ .text span.red {
+    color: #ff0000;
+ }
+
+ body {
+    background: #020405;
+    padding: 3em;
+    font-family: "'Inter Tight', sans-serif;";
+ }
+ .text {
+    font-size: 4vw;
+    word-spacing: 0.2em;
+    margin: 0 auto;
+    background: #fff;
+    padding: 0.5em;
+    border: 0.5vw solid #000000;
+    position:relative;
+    line-height: 1.2em;
+    height: 25%;
+    width: 70%;
+    font-family: 'Silkscreen', cursive;
+ }
+ .corner {
+    position:absolute;
+    width: 2vw;
+    right:2vw;
+    bottom:0;
+    transform: translateY(80%); 
+ }
+
+ .back
+ {
+   position:absolute;
+   top: 140px;
+   left: 220px;
+   z-index: 1;
+ }
+ .front
+ {
+   position:relative;
+   top: 25px;
+   left: 0px;
+   z-index: 2;   
+ }
+
+ .character
+ {
+   position:relative;
+   top: 200px;
+   left:-200px;
+   z-index: 3;   
+   width: 10%;
+   /* opacity: 50%; */
+   /* overflow:hidden;
+   background-blend-mode: darken; */
+   mix-blend-mode: multiply;
+ }
+
+ .enemy
+ {
+   position:relative;
+   top: 40px;
+   left:150px;
+   z-index: 4;   
+   width: 20%;
+   /* opacity: 50%; */
+   /* overflow:hidden;
+   background-blend-mode: darken; */
+   mix-blend-mode: multiply;
+ }
+
+ .login
+   {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+     
+    }
+ 
