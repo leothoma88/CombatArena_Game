@@ -1,5 +1,5 @@
 body{
-   background-image: ".";
+   background-color: coral;
 }
 
 img {
@@ -94,7 +94,132 @@ img {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%);
+    
      
     }
  
+    a {
+      text-decoration: none;
+    }
+    
+    nav {
+       font-family: monospace;
+       position:relative;
+      z-index: 2;
+      width: 10%;
+    }
+    
+    ul {
+      
+       list-style: none;
+       /* margin: 0;
+       padding-left: 0; */
+    }
+    
+    li {
+       color: #fff;
+      background: rgb(6, 5, 5);
+       
+       padding: 1rem;
+       text-decoration: none;
+      transition-duration: 0.5s;
+      text-align: center;
+    }
+      
+   
+    
+    li:hover {
+       cursor: pointer;
+       opacity: 50%;
+    }
+    
+    ul li ul {
+       background: orange;
+       visibility: hidden;
+      opacity: 0;
+      min-width: 5rem;
+       position: absolute;
+      transition: all 0.5s ease;
+      margin-top: 1rem;
+       left: 0;
+      display: none;
+    }
+    
+    ul li:hover > ul,
+    ul li ul:hover {
+      visibility: visible;
+      opacity: 1;
+      display: block;
+    }
+    
+    ul li ul li {
+       clear: both;
+      width: 100%;
+    }
+
+    #myProgress {
+      width: 10%;
+      background-color: grey;
+    }
+    
+    #myBar {
+      width: 70%;
+      height: 30px;
+      background-color: rgb(128, 0, 9);
+      color: #fff;
+    }  
+
+    #myProgress2 {
+      width: 10%;
+      background-color: grey;
+    }
+    
+    #myBar2 {
+      width: 80%;
+      height: 30px;
+      background-color: rgb(23, 0, 128);
+      color: #fff;
+    }  
+
+    #TextBox{
+       background-color: #fff;
+       color: #000000;
+       text-align: center;
+       width: 300px;
+       height: 100px;
+       border: 5px solid black;
+       font-family: 'Silkscreen', cursive;
+
+    }
+
+    .next {
+      background-color: #000000;
+      color: white;
+      text-decoration: none;
+      /* display: inline-block; */
+      padding: 8px 16px;
+      top:10px;
+      position:relative;
+     top: 25px;
+     left: 0px;
+     z-index: 2
+    }
+
+    .next:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    #dialogue{
+      background-color: #fff;
+      color: #000000;
+      text-align: center;
+      width: 600px;
+      height: 300px;
+      border: 5px solid black;
+      font-family: 'Silkscreen', cursive;
+
+   }
+
+  
