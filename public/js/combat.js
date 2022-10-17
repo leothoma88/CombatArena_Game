@@ -40,13 +40,13 @@ const battle = (character, npc, choice) => {
     character = this.character;
     npc = this.npc;
     choice = this.choice;
-    const userWin;
-    const userLoss;
-    const tie;
+    let userWin;
+    let userLoss;
+    let tie;
     let attackChoice = [light, strong, parry];
     chooseAttack();
 
-    let index = Math.floor(Math.random() * attackChoice.length;)
+    let index = Math.floor(Math.random() * attackChoice.length)
     npcChoice = options[index];
 
     if (choice === npcChoice) {
@@ -64,8 +64,8 @@ const battle = (character, npc, choice) => {
     ) {
         return userLoss;
     }      
-}
+};
 
 
 //need function to subtract strength from health based on the result. dunno if i should do this inside the battle function
-//or afterwards in another function
+//or afterwards in another
