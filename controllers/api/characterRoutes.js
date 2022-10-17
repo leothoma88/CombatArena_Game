@@ -1,14 +1,20 @@
 const router = require('express').Router();
 const { User, Characters } = require('../../models');
 
-//get the character & data
-router.get('/getCharacter/:user_id', (req, res) => {
-    Characters.findOne({
-        where: {
-            user_id: req.params.user_id
+//get a character
+router.get('/getCharacter/:user_id', async (req, res) => {
+    try {
+        const characterData = await Characters.findByPk(req.params.user_id, {
+            include: [{ model: User}],
+        });
+        
+        if (!characterData) {
+            res.status(404).json({ message: 'no character found with that id!'});
         }
-         
-    })
+        res.status(200).json(characterData);
+    } catch (err) {
+        res.status(500).json(err);
+    }
     //grab character data and pass to front end in res
 })
 
