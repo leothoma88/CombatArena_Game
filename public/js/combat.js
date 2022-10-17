@@ -64,7 +64,7 @@ const battle = (character, npc, choice) => {
     ) {
         return userLoss;
     }      
-}
+};
 
 
 //need function to subtract strength from health based on the result. dunno if i should do this inside the battle function
