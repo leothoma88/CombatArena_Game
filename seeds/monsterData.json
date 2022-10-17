@@ -1,0 +1,33 @@
+[
+    {
+      "id": "1",
+      "name": "Goblin",
+      "strength": "5",
+      "health": "20"
+    },
+    {
+        "id": "2",
+        "name": "Thief",
+        "strength": "10",
+        "health": "40"
+    },
+    {
+        "id": "3",
+        "name": "Assassin",
+        "strength": "10",
+        "health": "50"
+    },
+    {
+        "id": "4",
+        "name": "Cyclops",
+        "strength": "20",
+        "health": "50"
+    },
+    {
+        "id": "5",
+        "name": "Vampire",
+        "strength": "20",
+        "health": "60"
+    }
+  ]
+  
