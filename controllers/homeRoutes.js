@@ -1,15 +1,65 @@
 const router = require('express').Router();
-const { User } = require('../models');
+const passport = require('passport');
 
-//login i used from one of the MVC modules, not sure if it will be useful
-//because i dont know how passport interacts with everything yet
-// router.get('/login', (req, res) => {
-//     if(req.session.logged_in) {
-//         res.redirect('/');
-//         return;
-//     }
+router.get('/', checkAuthenticated, (req, res) => {
+  res.render('index.js', { name: req.user.name });
+});
 
-//     res.render('login');
-// });
+router.get('/login', checkNotAuthenticated, (req, res) => {
+  res.render('login.handlebars');
+});
 
-// module.exports = router;
+router.post(
+  '/login',
+  checkNotAuthenticated,
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/login',
+  })
+);
+
+router.get('/register', checkNotAuthenticated, (req, res) => {
+  res.render('register.handlebars');
+});
+
+//bcrypt hashpassword from register post
+router.post('/register', checkNotAuthenticated, async (req, res) => {
+  try {
+    const hashedPass = bcrypt.hash(req.body.password, 10);
+    users.push({
+      id: Date.now().toString(),
+      name: req.body.email,
+      email: req.body.email,
+      password: hashedPass,
+    });
+    res.redirect('/login');
+  } catch {
+    res.redirect('/register');
+  }
+  console.log(users);
+});
+
+//Ends session
+router.delete('/logout', (req, res) => {
+  req.logOut();
+  res.redirect('/login');
+});
+
+//protect home route from not logged in users
+function checkAuthenticated(req, res, next) {
+  console.log('req.isAuthenticated:', req.isAuthenticated());
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect('/login');
+}
+
+//prevent already logged in user from logging in
+function checkNotAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return res.redirect('/');
+  }
+  next();
+}
+
+module.exports = router;
