@@ -7,7 +7,7 @@ const computerHP = document.querySelector('.computer-health');
 //Not using
 const playerC = document.querySelector('.player-button-choice button');
 //Textbox
-const overallResult = document.getElementById('#TextBox');
+const overallResult = document.getElementById('TextBox');
 //Not using
 const computerC = document.querySelector('.computer-button-choice button');
 const compButtonF = document.querySelector('.box-right button.computer-fire');
@@ -158,16 +158,16 @@ function damageHP(HP, damage) {
 
 
 function showDrawResult() {
-    overallResult.textContent = "It's a Draw!";
+    overallResult.textContent = `It's a Draw! Both of you chose ${playerChoice}`;
     
 }
 
 function showWinResult() {
-    overallResult.textContent = "You Win!";
+    overallResult.textContent = `You Win! ${playerChoice} beats ${computerChoice}`
     
 }
 
 function showLoseResult() {
-    overallResult.textContent = "You Lose!";
+    overallResult.textContent = `You Lose! ${computerChoice} beats ${playerChoice}`;
     
 }
