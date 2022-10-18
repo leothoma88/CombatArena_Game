@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const passport = require('passport');
+const bcrypt = require('bcrypt');
 
 router.get('/', checkAuthenticated, (req, res) => {
-  res.render('index.js', { name: req.user.name });
+  res.render('index.handlebars', { name: req.user.name });
 });
 
 router.get('/login', checkNotAuthenticated, (req, res) => {
@@ -36,18 +37,21 @@ router.post('/register', checkNotAuthenticated, async (req, res) => {
   } catch {
     res.redirect('/register');
   }
-  console.log(users);
+  console.log(users)
 });
 
 //Ends session
-router.delete('/logout', (req, res) => {
-  req.logOut();
+router.delete('/logout', (req, res, next) => {
+  req.logOut((err) => {
+    if(err) {
+      return next(err);
+    }
   res.redirect('/login');
+  });
 });
 
 //protect home route from not logged in users
 function checkAuthenticated(req, res, next) {
-    console.log('req.isAuthenticated:', req.isAuthenticated())
   if (req.isAuthenticated()) {
     return next();
   }

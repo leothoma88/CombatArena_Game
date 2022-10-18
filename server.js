@@ -1,23 +1,24 @@
-const path = require('path');
+// imports
+require('dotenv').config();
 const express = require('express');
 const exphbs = require('express-handlebars');
 const bcrypt = require('bcrypt');
 const passport = require('passport');
-const initializePassport = require('./config/passport-config.js');
+const initializePassport = require('./config/passport-config');
 const session = require('express-session');
 const routes = require('./controllers');
 const methodOverride = require('method-override');
-require('dotenv').config();
+const sequelize = require('./config/connection');
 
+//temp local variable before connecting to database
 const users = [];
 
 initializePassport(
   passport,
   (email) => users.find((user) => user.email === email),
-  (id) => users.find((user) => user.id === id)
+  (id) => users.find((user) => user.id === id),
 );
 
-const sequelize = require('./config/connection');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -28,8 +29,9 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 app.use(express.json());
+
+//tells application to allow us to access the form in our request variable in our post method
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'public')));
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
