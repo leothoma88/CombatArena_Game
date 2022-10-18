@@ -3,7 +3,7 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const bcrypt = require('bcrypt');
 const passport = require('passport');
-const initializePassport = require('./config/passport-config');
+const initializePassport = require('./controllers/home-routes.js');
 const session = require('express-session');
 const methodOverride = require('method-override');
 
