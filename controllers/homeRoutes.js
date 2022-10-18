@@ -47,7 +47,7 @@ router.delete('/logout', (req, res) => {
 
 //protect home route from not logged in users
 function checkAuthenticated(req, res, next) {
-    console.log('req.isAuthenticated:', req.isAuthenticated())
+  console.log('req.isAuthenticated:', req.isAuthenticated());
   if (req.isAuthenticated()) {
     return next();
   }
@@ -61,6 +61,5 @@ function checkNotAuthenticated(req, res, next) {
   }
   next();
 }
-
 
 module.exports = router;
