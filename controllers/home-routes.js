@@ -70,7 +70,7 @@ router.delete('/logout', (req, res) => {
     res.redirect('/login')
   })
 
-  //uses
+  //protect home route from not logged in users
   function checkAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
@@ -78,10 +78,12 @@ router.delete('/logout', (req, res) => {
     res.redirect('/login')
   }
 
-  // uses passport is authenticated
+  //prevent already logged in user from logging in
   function checkNotAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         return res.redirect('/');
     }
     next();
   }
+
+  module.exports = router;
