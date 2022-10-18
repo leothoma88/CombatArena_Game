@@ -1,8 +1,18 @@
 const router = require('express').Router();
 const passport = require('passport');
+const bcrypt = require('bcrypt');
+const initializePassport = require('../config/passport-config');
+
+const users = [];
+
+initializePassport(
+  passport,
+  (email) => users.find((user) => user.email === email),
+  (id) => users.find((user) => user.id === id)
+);
 
 router.get('/', checkAuthenticated, (req, res) => {
-  res.render('index.js', { name: req.user.name });
+  res.render('index.handlebars', { name: req.user.name });
 });
 
 router.get('/login', checkNotAuthenticated, (req, res) => {
@@ -15,6 +25,7 @@ router.post(
   passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/login',
+  
   })
 );
 
@@ -25,10 +36,10 @@ router.get('/register', checkNotAuthenticated, (req, res) => {
 //bcrypt hashpassword from register post
 router.post('/register', checkNotAuthenticated, async (req, res) => {
   try {
-    const hashedPass = bcrypt.hash(req.body.password, 10);
+    const hashedPass = await bcrypt.hash(req.body.password, 10);
     users.push({
       id: Date.now().toString(),
-      name: req.body.email,
+      name: req.body.name,
       email: req.body.email,
       password: hashedPass,
     });
@@ -40,7 +51,7 @@ router.post('/register', checkNotAuthenticated, async (req, res) => {
 });
 
 //Ends session
-router.delete('/logout', (req, res) => {
+router.delete('/logout', (req, res, next) => {
   req.logOut();
   res.redirect('/login');
 });
