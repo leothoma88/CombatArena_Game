@@ -1,3 +1,4 @@
+//Creates start button variable
 const startbutton = document.getElementById('startbutton')
 
 
@@ -9,7 +10,7 @@ startbutton.addEventListener("click",startFirstLevel)
 
 
 function startFirstLevel (){
-    window.location.replace("/dialoguepage");
+    window.location.href="/dialoguepage"
 }
 
 var container = document.querySelector(".text");
