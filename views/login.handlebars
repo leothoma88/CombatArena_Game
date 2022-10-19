@@ -1,4 +1,4 @@
-  <header>
+<header>
         <h1 style="text-align: center;">COMBAT ARENA</h1>
     </header>
     <main>
@@ -11,19 +11,21 @@
         top: 300px;
         left: 620px;
         z-index: 2;">
-        <form style="text-align: center;" action="/login" method="POST" class="front" >
-                <div>
+        <form style="text-align: center;" action="/login" method="POST" class="front">
+                <div class="form-group">
                 <label for="email ">Email :    </label>
-                <input type="text" id="email" name="email" 
+                <input class="form-input" type="text" id="email-login" name="email" 
                 required>
                 </div>
             
-                <div>
-                <label for="password">Password: </label>
-                <input type="text" id="password" name="password" 
+                <div class="form-group">
+                <label for="password-login">Password: </label>
+                <input class="form-input" type="text" id="password-login" name="password" 
                 required>
                 </div>
+                <div class="form-group">
                 <button style="text-align: center;margin: 20px;" type="submit">Login</button>
+                </div>
         </form>  
         </div>
         <div style="position:relative;
@@ -33,4 +35,4 @@
             <a href="/register" >Register</a>
         </div>
         
-    </main>  
+    </main>    
