@@ -165,7 +165,8 @@ function damageHP(HP, damage) {
 
 //Gets us to next dialogue page
 function dialoguePage(){
-    window.location.replace("/dialoguepage");
+    // window.location.replace("/dialoguepage");
+    window.location.replace("/dialoguepage.html")
 }
 
 
