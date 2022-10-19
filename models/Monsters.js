@@ -9,7 +9,7 @@ Monsters.init(
       allowNull: false,
       primaryKey: true,
     },
-    name: {
+    monsterName: {
       type: DataTypes.STRING,
       allowNull: false,
     },
