@@ -2,13 +2,20 @@ const router = require('express').Router();
 const passport = require('passport');
 const bcrypt = require('bcrypt');
 const initializePassport = require('../config/passport-config');
+const { Op } = require("sequelize");
 
-const users = [];
+const db = require('../models/');
 
 initializePassport(
   passport,
-  (email) => users.find((user) => user.email === email),
-  (id) => users.find((user) => user.id === id)
+  async (email) => {
+    const user = await db.User.findOne({where: {email: email}})
+    return user;
+  },
+  async (id) => {
+    const user = await db.User.findOne({where: {id: id}})
+    return user;
+  }
 );
 
 router.get('/', checkAuthenticated, (req, res) => {
@@ -37,17 +44,16 @@ router.get('/register', checkNotAuthenticated, (req, res) => {
 router.post('/register', checkNotAuthenticated, async (req, res) => {
   try {
     const hashedPass = await bcrypt.hash(req.body.password, 10);
-    users.push({
-      id: Date.now().toString(),
+   const userData = await db.User.create({
       name: req.body.name,
       email: req.body.email,
       password: hashedPass,
     });
+    console.log(userData);
     res.redirect('/login');
   } catch {
     res.redirect('/register');
   }
-  console.log(users)
 });
 
 //Ends session
