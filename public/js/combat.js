@@ -14,7 +14,12 @@ const compButtonF = document.querySelector('.box-right button.computer-fire');
 const compButtonW = document.querySelector('.box-right button.computer-water');
 const compButtonG = document.querySelector('.box-right button.computer-grass');
 
+const restartID = document.getElementById('restart');
+
 buttons.forEach(button => button.addEventListener('click', playGame));
+restartID.addEventListener("click",replayGame)
+
+//Restartbutton
 
 
 let computerChoice = '';
@@ -81,6 +86,8 @@ function playGame(e) {
     }
     if (playerHP.value === 0) {
         overallResult.textContent = 'You Lost!';
+        restartID.classList.remove('restart');
+
     }
 }
 
@@ -134,18 +141,13 @@ function playRound() {
 function replayGame() {
     computerChoice = '';
     playerChoice = '';
-    computerC.className = '';
-    playerC.className = '';
-    boxResult.textContent = '';
     overallResult.textContent = '';
-    roundNum.textContent = '';
-    playerHP.style.width = "100%";
-    computerHP.style.width ="100%";
-    computerC.innerHTML = '?';
-    playerC.innerHTML = '?';
+    playerHP.value = 100;
+    computerHP.value =100;
+    
 
 
-    resetSelection();
+    // resetSelection();
 
 }
 
