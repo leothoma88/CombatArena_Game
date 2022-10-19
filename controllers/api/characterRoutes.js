@@ -20,23 +20,21 @@ router.get('/:id', async (req, res) => {
 
 //update strength
 router.put('/:id', (req, res) => {
+    console.log('help', req.params);
     Characters.update(
         {
-            id: req.body.id,
-            name: req.body.name,
             strength: req.body.strength,
-            health: req.body.health,
-            user_id: req.body.user_id,
         },
         {
+            returning: true,
             where: {
-                strength: req.params.strength,
+                id: req.params.id,
             }
         }
-    ).then((updatedCharacter) => {
+    ).then(([rowsUpdated, [updatedCharacter]]) => {
+        console.log(updatedCharacter);
         res.json(updatedCharacter)
     })
-
     .catch((err) => res.json(err));
 });
 
