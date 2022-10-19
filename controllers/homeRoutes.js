@@ -52,8 +52,12 @@ router.post('/register', checkNotAuthenticated, async (req, res) => {
 
 //Ends session
 router.delete('/logout', (req, res, next) => {
-  req.logOut();
-  res.redirect('/login');
+  req.logOut((err) => {
+    if(err){
+      return next(err);
+    }
+    res.redirect('/login');
+  });  
 });
 
 //protect home route from not logged in users
