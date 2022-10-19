@@ -2,10 +2,10 @@ const router = require('express').Router();
 const { User, Characters } = require('../../models');
 
 //get the character & data
-router.get('/getCharacter/:user_id', async (req, res) => {
+router.get('/:id', async (req, res) => {
     try {
         const characterData = await Characters.findByPk(req.params.id, {
-            include: [{ model: User, Characters}],
+            // include: [{ model: User,}],
         });
         
         if (!characterData) {
@@ -18,17 +18,43 @@ router.get('/getCharacter/:user_id', async (req, res) => {
   //grab character data and pass to front end in res
 });
 
-router.post('/updateCharacter/:user_id', (req, res) => {
-  //todo: get user from session using passport/express whatever,
-  //after u have user,grab id of user and use that to update the character
+//update strength
+router.put('/:id', (req, res) => {
+    Characters.update(
+        {
+            id: req.body.id,
+            name: req.body.name,
+            strength: req.body.strength,
+            health: req.body.health,
+            user_id: req.body.user_id,
+        },
+        {
+            where: {
+                strength: req.params.strength,
+            }
+        }
+    ).then((updatedCharacter) => {
+        res.json(updatedCharacter)
+    })
 
-  const [updatedRows] = await;
-  Characters.update(
-    {},
-    {
-      where: { x: null },
-    }
-  );
+    .catch((err) => res.json(err));
 });
 
+
+
+
+// router.post('/updateCharacter/:user_id', (req, res) => {
+//   //todo: get user from session using passport/express whatever,
+//   //after u have user,grab id of user and use that to update the character
+
+//   const [updatedRows] = await;
+//   Characters.update(
+//     {},
+//     {
+//       where: { x: null },
+//     }
+//   );
+// });
+
 module.exports = router;
+
