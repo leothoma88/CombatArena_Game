@@ -2,10 +2,10 @@ const router = require('express').Router();
 const { User, Characters } = require('../../models');
 
 //get the character & data
-router.get('/getCharacter/:user_id', async (req, res) => {
+router.get('/:user_id', async (req, res) => {
     try {
         const characterData = await Characters.findByPk(req.params.id, {
-            include: [{ model: User, Characters}],
+            include: [{ model: User,}],
         });
         
         if (!characterData) {

@@ -2,10 +2,10 @@ const router = require('express').Router();
 const { Monsters } = require('../../models');
 
 //get a monster
-router.get(`/getMonsters/:id`, async (req, res) => {
+router.get(`/:id`, async (req, res) => {
     try {
         const monsterData = await Monsters.findByPk(req.params.id, {
-            include: [{ model: Monster}],
+            
         });
         
         if (!monsterData) {
