@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Monsters } = require('../../models');
 
 //get a monster
-router.get('/getMonsters/:id', async (req, res) => {
+router.get(`/getMonsters/:id`, async (req, res) => {
     try {
         const monsterData = await Monsters.findByPk(req.params.id, {
             include: [{ model: Monster}],
@@ -17,3 +17,5 @@ router.get('/getMonsters/:id', async (req, res) => {
     }
     //grab monster data and pass to front end in res
 })
+
+module.exports = router;
