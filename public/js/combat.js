@@ -1,71 +1,173 @@
-const { options } = require("../../models/Characters");
+//Makes buttons start the game
+const buttons = Array.from(document.querySelectorAll('button'));
+//Player health
+const playerHP = document.querySelector('.player-health');
+//Computer health
+const computerHP = document.querySelector('.computer-health');
+//Not using
+const playerC = document.querySelector('.player-button-choice button');
+//Textbox
+const overallResult = document.getElementById('TextBox');
+//Not using
+const computerC = document.querySelector('.computer-button-choice button');
+const compButtonF = document.querySelector('.box-right button.computer-fire');
+const compButtonW = document.querySelector('.box-right button.computer-water');
+const compButtonG = document.querySelector('.box-right button.computer-grass');
+
+buttons.forEach(button => button.addEventListener('click', playGame));
 
 
-// const john = { 
-//     health: 100,
-//     name: john,
-//     strength: 30,
-//     user_id: 1,
-//     id: 1,
-// }
+let computerChoice = '';
+let playerChoice = '';
 
-// const monster = {
-//     health: 100, 
-//     name: vampire,
-//     strength: 20,
-//     user_id: 2,
-//     id: 2,
-// }
-class Character {
-    constructor(name, strength, health) {
-        this.name = name;
-        this.strength = strength;
-        this.health = health;
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+}
+
+function computerPlay() {
+    const choice = ['Fire', 'Water', 'Grass'];
+    return choice[getRandomInt(3)];
+}
+
+function selectChoice(e) {
+    const className = e.target.className;
+    let compC;
+    compC = computerPlay();
+
+    // resetSelection();
+
+    // if (computerC.className != '') {
+    //     computerC.className = '';
+    // }
+
+    // if (playerC.className !== '') {
+    //     playerC.className = '';
+    // }
+
+    if (compC === 'Fire') {
+        computerChoice = 'Fire';
+    } else if (compC === 'Water') {
+        computerChoice = 'Water';
+    } else if (compC === 'Grass') {
+        computerChoice = 'Grass';
     }
 
-    isAlive() {
-        if(this.health < 1) {
-            console.log(`${this.name} has been defeated`);
-            return false;
-        }
-        return true;
+    if (className === 'choice player-fire') {
+        playerChoice = 'Fire';
+    } else if (className === 'choice player-water') {
+        playerChoice = 'Water';
+    } else if (className === 'choice player-grass') {
+        playerChoice = 'Grass';
+    }
+
+    // playerC.className = className;
+}
+
+
+function playGame(e) {
+    if (playerHP.value <= 0 || computerHP.value <= 0) {
+        return;
+    }
+
+    selectChoice(e);
+
+    if (playerHP.value !== 0 && computerHP.value !== 0) {
+        playRound();
+    }
+
+    if (computerHP.value === 0) {
+        overallResult.textContent = 'You Won!';
+    }
+    if (playerHP.value === 0) {
+        overallResult.textContent = 'You Lost!';
     }
 }
 
-//just for testing, dunno if i actually even need to use these
-const john = new Character('john', 100, 10);
-const cow = new Character('cow', 100, 5);
+function playRound() {
 
-const battle = (character, npc, choice) => {
-    character = this.character;
-    npc = this.npc;
-    choice = this.choice;
-    let userWin;
-    let userLoss;
-    let tie;
-    let attackChoice = [light, strong, parry];
-    chooseAttack();
+    if (computerChoice === 'Fire') {
+        switch (playerChoice) {
+            case 'Fire':
+                showDrawResult();
+                break;
+            case 'Water':
+                showWinResult();
+                damageHP(computerHP, 20);
+                break;
+            case 'Grass':
+                showLoseResult();
+                damageHP(playerHP, 20);
+                break;
+        }
+    } else if (computerChoice === 'Water') {
+        switch (playerChoice) {
+            case 'Water':
+                showDrawResult();
+                break;
+            case 'Grass':
+                showWinResult();
+                damageHP(computerHP, 20);
+                break;
+            case 'Fire':
+                showLoseResult();
+                damageHP(playerHP, 20);
+                break;
+        }
+    } else if (computerChoice === 'Grass') {
+        switch (playerChoice) {
+            case 'Grass':
+                showDrawResult();
+                break;
+            case 'Fire':
+                showWinResult();
+                damageHP(computerHP, 20);
+                break;
+            case 'Water':
+                showLoseResult();
+                damageHP(playerHP, 20);
+                break;
+        }
+    }
+}
 
-    let index = Math.floor(Math.random() * attackChoice.length)
-    npcChoice = options[index];
-
-    if (choice === npcChoice) {
-        return tie;
-    } else if (
-        (choice === 'light' && npcChoice === 'strong') ||
-        (choice === 'strong' && npcChoice === 'parry') ||
-        (choice === 'parry' && npcChoice === 'light')
-    ) {
-        return userWin;
-    } else if (
-        (choice === 'strong' && npcChoice === 'light') ||
-        (choice === 'parry' && npcChoice === 'strong') ||
-        (choice === 'light'&& npcChoice === 'parry')
-    ) {
-        return userLoss;
-    }      
-};
+function replayGame() {
+    computerChoice = '';
+    playerChoice = '';
+    computerC.className = '';
+    playerC.className = '';
+    boxResult.textContent = '';
+    overallResult.textContent = '';
+    roundNum.textContent = '';
+    playerHP.style.width = "100%";
+    computerHP.style.width ="100%";
+    computerC.innerHTML = '?';
+    playerC.innerHTML = '?';
 
 
-//need function to subtract strength from health based on the result. dunno if i should do this inside the battle function
-//or afterwards in another
+    resetSelection();
+
+}
+
+function damageHP(HP, damage) {
+    HP.value -= damage;
+    return HP;
+}
+
+
+
+
+function showDrawResult() {
+    overallResult.textContent = `It's a Draw! Both of you chose ${playerChoice}`;
+    
+}
+
+function showWinResult() {
+    overallResult.textContent = `You Win! ${playerChoice} beats ${computerChoice}`
+    
+}
+
+function showLoseResult() {
+    overallResult.textContent = `You Lose! ${computerChoice} beats ${playerChoice}`;
+    
+}

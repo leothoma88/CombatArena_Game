@@ -2,6 +2,11 @@ body{
    background-color: coral;
 }
 
+button {
+  background-color: #000000;
+
+}
+
 img {
     display: block;
     margin-left: auto;
@@ -160,7 +165,7 @@ img {
 
     #myProgress {
       width: 10%;
-      background-color: grey;
+      
     }
     
     #myBar {
@@ -172,7 +177,7 @@ img {
 
     #myProgress2 {
       width: 10%;
-      background-color: grey;
+      
     }
     
     #myBar2 {
