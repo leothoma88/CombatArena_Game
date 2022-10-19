@@ -15,9 +15,11 @@ const compButtonW = document.querySelector('.box-right button.computer-water');
 const compButtonG = document.querySelector('.box-right button.computer-grass');
 
 const restartID = document.getElementById('restart');
+const nextLevel=  document.getElementById('nextup');
 
 buttons.forEach(button => button.addEventListener('click', playGame));
 restartID.addEventListener("click",replayGame)
+nextLevel.addEventListener("click",dialoguePage)
 
 //Restartbutton
 
@@ -31,7 +33,7 @@ function getRandomInt(max) {
 }
 
 function computerPlay() {
-    const choice = ['Fire', 'Water', 'Grass'];
+    const choice = ["Sword", "Shield", "Arrows"];
     return choice[getRandomInt(3)];
 }
 
@@ -50,20 +52,20 @@ function selectChoice(e) {
     //     playerC.className = '';
     // }
 
-    if (compC === 'Fire') {
-        computerChoice = 'Fire';
-    } else if (compC === 'Water') {
-        computerChoice = 'Water';
-    } else if (compC === 'Grass') {
-        computerChoice = 'Grass';
+    if (compC === "Sword") {
+        computerChoice = "Sword";
+    } else if (compC === "Shield") {
+        computerChoice = "Shield";
+    } else if (compC === "Arrows") {
+        computerChoice = "Arrows";
     }
 
     if (className === 'choice player-fire') {
-        playerChoice = 'Fire';
+        playerChoice = "Sword";
     } else if (className === 'choice player-water') {
-        playerChoice = 'Water';
+        playerChoice = "Shield";
     } else if (className === 'choice player-grass') {
-        playerChoice = 'Grass';
+        playerChoice = "Arrows";
     }
 
     // playerC.className = className;
@@ -83,54 +85,56 @@ function playGame(e) {
 
     if (computerHP.value === 0) {
         overallResult.textContent = 'You Won!';
+        nextLevel.classList.remove('hide')
+
     }
     if (playerHP.value === 0) {
         overallResult.textContent = 'You Lost!';
-        restartID.classList.remove('restart');
+        restartID.classList.remove('hide');
 
     }
 }
 
 function playRound() {
 
-    if (computerChoice === 'Fire') {
+    if (computerChoice === "Sword") {
         switch (playerChoice) {
-            case 'Fire':
+            case "Sword":
                 showDrawResult();
                 break;
-            case 'Water':
+            case "Shield":
                 showWinResult();
                 damageHP(computerHP, 20);
                 break;
-            case 'Grass':
+            case "Arrows":
                 showLoseResult();
                 damageHP(playerHP, 20);
                 break;
         }
-    } else if (computerChoice === 'Water') {
+    } else if (computerChoice === "Shield") {
         switch (playerChoice) {
-            case 'Water':
+            case "Shield":
                 showDrawResult();
                 break;
-            case 'Grass':
+            case "Arrows":
                 showWinResult();
                 damageHP(computerHP, 20);
                 break;
-            case 'Fire':
+            case "Sword":
                 showLoseResult();
                 damageHP(playerHP, 20);
                 break;
         }
-    } else if (computerChoice === 'Grass') {
+    } else if (computerChoice === "Arrows") {
         switch (playerChoice) {
-            case 'Grass':
+            case "Arrows":
                 showDrawResult();
                 break;
-            case 'Fire':
+            case "Sword":
                 showWinResult();
                 damageHP(computerHP, 20);
                 break;
-            case 'Water':
+            case "Shield":
                 showLoseResult();
                 damageHP(playerHP, 20);
                 break;
@@ -138,6 +142,8 @@ function playRound() {
     }
 }
 
+
+//Restarts the game
 function replayGame() {
     computerChoice = '';
     playerChoice = '';
@@ -151,9 +157,15 @@ function replayGame() {
 
 }
 
+//Does the damage
 function damageHP(HP, damage) {
     HP.value -= damage;
     return HP;
+}
+
+//Gets us to next dialogue page
+function dialoguePage(){
+    window.location.replace("/dialoguepage");
 }
 
 
