@@ -66,6 +66,11 @@ button {
   margin-top: -100px;
 }
 
+.gamestart{
+  margin-top: 100px;
+  margin-left: 340px;
+}
+
 
 
 
@@ -103,9 +108,10 @@ button {
     border: 0.5vw solid #000000;
     position:relative;
     line-height: 1.2em;
-    height: 25%;
-    width: 70%;
+    height: 300px;
+    width: 90%;
     font-family: 'Silkscreen', cursive;
+    text-align: center;
  }
  .corner {
     position:absolute;
