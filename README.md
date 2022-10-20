@@ -33,6 +33,8 @@ This is a full-stack project making use of Node.js and Express.js, MySQL and Seq
 * SESSION_SECRET= "secret"
 ### Run the program by typing 'node server' and opening localhost:3000 on your browser
 ![Screenshot](./public/images/combatreadme4.png)
+## Alternatively, access our deployed application via Heroku below:
+### [Combat Arena Game](https://combat-arena-game.herokuapp.com/)
 
 ## Usage
 
