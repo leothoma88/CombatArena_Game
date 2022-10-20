@@ -1,33 +1,32 @@
 [
     {
       "id": "0",
-      "monsterName": "Goblin",
+      "name": "joe",
       "strength": "5",
       "health": "20"
     },
     {
         "id": "1",
-        "monsterName": "Thief",
+        "name": "Tasdf",
         "strength": "10",
         "health": "40"
     },
     {
         "id": "2",
-        "monsterName": "Assassin",
+        "name": "dedw",
         "strength": "10",
         "health": "50"
     },
     {
         "id": "3",
-        "monsterName": "Cyclops",
+        "name": "fef",
         "strength": "20",
         "health": "50"
     },
     {
         "id": "4",
-        "monsterName": "Vampire",
+        "name": "fda",
         "strength": "20",
         "health": "60"
     }
   ]
-  

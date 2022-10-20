@@ -2,8 +2,6 @@ const router = require('express').Router();
 const passport = require('passport');
 const bcrypt = require('bcrypt');
 const initializePassport = require('../config/passport-config');
-const { Op } = require("sequelize");
-
 const db = require('../models/');
 
 initializePassport(
@@ -44,7 +42,7 @@ router.get('/register', checkNotAuthenticated, (req, res) => {
 router.post('/register', checkNotAuthenticated, async (req, res) => {
   try {
     const hashedPass = await bcrypt.hash(req.body.password, 10);
-   const userData = await db.User.create({
+    const userData = await db.User.create({
       name: req.body.name,
       email: req.body.email,
       password: hashedPass,
