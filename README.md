@@ -25,6 +25,8 @@ This is a full-stack project making use of Node.js and Express.js, MySQL and Seq
 ### Type the command 'npm install' to install all project dependencies
 ### Type the command 'mysql -u root -p' followed by your MySQL password. Once in MySQL, type 'source db/schema.sql' to initialize this project's database.
 ![Screenshot](./public/images/combatreadme3.png)
+### Seed the database by running this command:
+    node seeds/seed.js
 ### Create a .env file with the following environment keys
 * HOST = "localhost"
 * DB_NAME= "CombatArena_Game"
