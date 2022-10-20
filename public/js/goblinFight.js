@@ -1,12 +1,18 @@
+const router = require('express').Router();
 //import battle.js
 //import getMOnsterData
 //import getCharacterData
 //import goblin image
 // const getCharacter = require("./getCharacterData");
 // // const getMonster  = require("./getMonsterData");
-
+const { Monsters } = require('../..controllers/api/monsterRoutes');
 // const char = getCharacter(0);
 // const goblin = getMonster(0);
+
+let goblin = router.get();
+
+console.log('call goblin', goblin);
+
 let something = [];
 const getMonster = async (id) =>  {
     // let x;
