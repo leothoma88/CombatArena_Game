@@ -2,16 +2,16 @@ const router = require('express').Router();
 const passport = require('passport');
 const bcrypt = require('bcrypt');
 const initializePassport = require('../config/passport-config');
-const db = require('../models/');
+const db = require('../models');
 
 initializePassport(
   passport,
   async (email) => {
-    const user = await db.User.findOne({where: {email: email}})
+    const user = await db.Users.findOne({where: {email: email}})
     return user;
   },
   async (id) => {
-    const user = await db.User.findOne({where: {id: id}})
+    const user = await db.Users.findOne({where: {id: id}})
     return user;
   }
 );
@@ -42,7 +42,7 @@ router.get('/register', checkNotAuthenticated, (req, res) => {
 router.post('/register', checkNotAuthenticated, async (req, res) => {
   try {
     const hashedPass = await bcrypt.hash(req.body.password, 10);
-    const userData = await db.User.create({
+    const userData = await db.Users.create({
       name: req.body.name,
       email: req.body.email,
       password: hashedPass,
