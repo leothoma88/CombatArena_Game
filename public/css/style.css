@@ -7,12 +7,82 @@ button {
 
 }
 
-img {
+.scenery{
+   background-image: url("/images/Arena_Background.jpg");
+   width: 1000px;
+   height: 559px;
+   margin: auto;
+   padding: 10px
+   ;
+   
+}
+
+
+
+.gameaction{
+  border: #000000;
+  width: 1000px;
+  height: 550px;
+  margin: auto;
+  z-index: 2;
+  padding: 10px
+
+}
+
+.playingcharacter{
+  border-color: #000000;
+  z-index: 2;
+  margin-top: 230px;
+  margin-left: 200px;
+
+}
+
+.enemycharacter{
+  
+  z-index: 2;
+  margin-top: -280px;
+  margin-left: 560px;
+  height: 280px;
+  width: 200px;
+
+
+}
+
+.choices{
+  width: 1000px;
+  height: 250px;
+  margin-top: -200px;
+  
+}
+
+#enemychoice{
+  left: 780px;
+  top: -170px;
+}
+
+
+.nextstep{
+  margin-left: 370px;
+  margin-top: -100px;
+}
+
+.gamestart{
+  margin-top: 100px;
+  margin-left: 340px;
+}
+
+.dialoguestep{
+  margin-top: 150px;
+  margin-left: 400px;
+}
+
+
+ /* img {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    opacity: 95%;
-  }
+    opacity 95%;
+  } */
 
   .text span {
     opacity: 0;
@@ -41,9 +111,10 @@ img {
     border: 0.5vw solid #000000;
     position:relative;
     line-height: 1.2em;
-    height: 25%;
-    width: 70%;
+    height: 300px;
+    width: 90%;
     font-family: 'Silkscreen', cursive;
+    text-align: center;
  }
  .corner {
     position:absolute;
@@ -53,7 +124,7 @@ img {
     transform: translateY(80%); 
  }
 
- .back
+ /* .back
  {
    position:absolute;
    top: 140px;
@@ -66,42 +137,44 @@ img {
    top: 25px;
    left: 0px;
    z-index: 2;   
- }
+ } */
 
  .character
  {
-   position:relative;
-   top: 200px;
-   left:-200px;
-   z-index: 3;   
-   width: 10%;
-   /* opacity: 50%; */
-   /* overflow:hidden;
-   background-blend-mode: darken; */
+
+   width: 150px;
+    opacity: 50%; 
+    overflow:hidden;
+   background-blend-mode: darken; 
    mix-blend-mode: multiply;
  }
 
  .enemy
  {
-   position:relative;
-   top: 40px;
-   left:150px;
-   z-index: 4;   
-   width: 20%;
-   /* opacity: 50%; */
-   /* overflow:hidden;
-   background-blend-mode: darken; */
+   
+   z-index: 2;   
+   width: 300px;
+   opacity: 50%; 
+   margin-left: -50px;
+   
+   overflow:hidden;
+   background-blend-mode: darken; 
    mix-blend-mode: multiply;
  }
 
- .login
+ .loginform
    {
-    position: absolute;
+    /* position: absolute; */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: 200px;
     
      
+    }
+
+    #none{
+      background-color: white;
     }
  
     a {
@@ -118,8 +191,8 @@ img {
     ul {
       
        list-style: none;
-       /* margin: 0;
-       padding-left: 0; */
+        margin: 0;
+       padding-left: 0; 
     }
     
     li {
@@ -164,7 +237,7 @@ img {
     }
 
     #myProgress {
-      width: 10%;
+      width: 30%;
       
     }
     
@@ -175,10 +248,10 @@ img {
       color: #fff;
     }  
 
-    #myProgress2 {
+    /* #myProgress2 {
       width: 10%;
       
-    }
+    } */
     
     #myBar2 {
       width: 80%;
@@ -195,6 +268,7 @@ img {
        height: 100px;
        border: 5px solid black;
        font-family: 'Silkscreen', cursive;
+       margin: auto;
 
     }
 
@@ -202,7 +276,7 @@ img {
       background-color: #000000;
       color: white;
       text-decoration: none;
-      /* display: inline-block; */
+       display: inline-block; 
       padding: 8px 16px;
       top:10px;
       position:relative;
@@ -229,4 +303,4 @@ img {
 
    .hide{
      display: none;
-   }
+   } 
