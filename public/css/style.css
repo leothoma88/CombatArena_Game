@@ -62,18 +62,18 @@ button {
 
 
 .nextstep{
-  margin-left: 370px;
+  text-align: center;
   margin-top: -100px;
 }
 
 .gamestart{
-  margin-top: 100px;
-  margin-left: 340px;
+  margin-top: 40px;
+  text-align: center;
 }
 
 .dialoguestep{
   margin-top: 150px;
-  margin-left: 400px;
+  text-align: center;
 }
 
 
@@ -143,7 +143,7 @@ button {
  {
 
    width: 150px;
-    opacity: 50%; 
+    opacity: 75%; 
     overflow:hidden;
    background-blend-mode: darken; 
    mix-blend-mode: multiply;
@@ -154,7 +154,7 @@ button {
    
    z-index: 2;   
    width: 300px;
-   opacity: 50%; 
+   opacity: 75%; 
    margin-left: -50px;
    
    overflow:hidden;
@@ -242,7 +242,7 @@ button {
     }
     
     #myBar {
-      width: 70%;
+      width: 180px;
       height: 30px;
       background-color: rgb(128, 0, 9);
       color: #fff;
@@ -265,7 +265,7 @@ button {
        color: #000000;
        text-align: center;
        width: 300px;
-       height: 100px;
+       height: 110px;
        border: 5px solid black;
        font-family: 'Silkscreen', cursive;
        margin: auto;
@@ -279,9 +279,6 @@ button {
        display: inline-block; 
       padding: 8px 16px;
       top:10px;
-      position:relative;
-     top: 25px;
-     left: 0px;
      z-index: 2
     }
 
