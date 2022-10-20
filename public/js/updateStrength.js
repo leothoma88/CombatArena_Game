@@ -1,34 +1,14 @@
-//NOT WORKING YET
-//STILL FIGURING OUT 
-//SUCH AN L
-//CANT BELIEVE I CANT FIGURE THIS OUT??
-//NEED TO PASS IN THE NEW STRENGTH STAT AND SEND IT BACK TO THE CHARACTER MODEL
-async function updateStrength(id, str)  {
+updateStrength(1, 20);
 
-    const response = await fetch(`/api/characters/${id}`, {
+async function updateStrength(id, str)  {
+    const url = `/api/characters/${id}`
+    const response = await fetch(url, {
         method: 'PUT',
-        body:JSON.stringify({
-            id,
-            name,
-            strength,
-            health,
-            user_id,
-        }),
-        headers: {
-            'Content-Type': 'application/json',
-        },
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({strength: str})
     });
-    if (response.ok) {
-        document.location.replace(`/character/${id}`)
-        //NOT SURE IF IT NEEDS TO BE LIKE THIS, LOOKING AT 
-        //10-STU_HANDLEBARS IN 14-MVC 
-        //PUBLIC/JS/EDIT-DISH.JS
-    } else {
-        alert('fail to update str');
-    }
+    console.log(response);
+    const json = await response.json();
+    console.log(json);
 }
 
-//seeded characters to test in insomnia 
-//testing function
-//latest error is "fetch not defined"
-updateStrength(1, 20);
