@@ -7,11 +7,11 @@ const db = require('../models');
 initializePassport(
   passport,
   async (email) => {
-    const user = await db.Users.findOne({where: {email: email}})
+    const user = await db.Users.findOne({ where: { email: email } });
     return user;
   },
   async (id) => {
-    const user = await db.Users.findOne({where: {id: id}})
+    const user = await db.Users.findOne({ where: { id: id } });
     return user;
   }
 );
@@ -30,7 +30,6 @@ router.post(
   passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/login',
-  
   })
 );
 
@@ -65,11 +64,11 @@ router.get('/combat', checkAuthenticated, (req, res) => {
 //Ends session
 router.get('/logout', (req, res, next) => {
   req.logOut((err) => {
-    if(err) {
+    if (err) {
       return next(err);
     }
-  req.session = null;
-  res.redirect('/login');
+    req.session = null;
+    res.redirect('/login');
   });
 });
 

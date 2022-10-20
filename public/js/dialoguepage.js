@@ -1,13 +1,11 @@
 //Logout button tag
-const loggedOut = document.getElementById("logout")
-const nextlevelID = document.getElementById("firstlevel")
-
+const loggedOut = document.getElementById('logout');
+const nextlevelID = document.getElementById('firstlevel');
 
 // // //eventlistener to log someoneout
 // // loggedOut.addEventListener("click",endsession)
 // // //event listener to the next button
 // nextlevelID.addEventListener("click",startlevel)
-
 
 // //logout function
 // // function endsession(){
@@ -18,4 +16,3 @@ const nextlevelID = document.getElementById("firstlevel")
 // function startlevel(){
 //     window.location.href="/combat"
 // }
-

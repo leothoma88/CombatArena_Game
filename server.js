@@ -20,7 +20,7 @@ app.use(express.json());
 //tells application to allow us to access the form in our request variable in our post method
 app.use(express.urlencoded({ extended: false }));
 
-app.use(express.static(path.join(__dirname, '/public')))
+app.use(express.static(path.join(__dirname, '/public')));
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
