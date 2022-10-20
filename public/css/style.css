@@ -17,6 +17,8 @@ button {
    
 }
 
+
+
 .gameaction{
   border: #000000;
   width: 1000px;
@@ -151,14 +153,19 @@ button {
    mix-blend-mode: multiply;
  }
 
- .login
+ .loginform
    {
-    position: absolute;
+    /* position: absolute; */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: 200px;
     
      
+    }
+
+    #none{
+      background-color: white;
     }
  
     a {
