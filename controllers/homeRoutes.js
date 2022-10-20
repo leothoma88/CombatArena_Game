@@ -6,8 +6,14 @@ const db = require('../models');
 
 initializePassport(
   passport,
-  (email) => db.Users.find((user) => user.email === email),
-  (id) => db.Users.find((user) => user.id === id)
+  async (email) => {
+    const user = await db.Users.findOne({where: {email: email}})
+    return user;
+  },
+  async (id) => {
+    const user = await db.Users.findOne({where: {id: id}})
+    return user;
+  }
 );
 
 router.get('/', checkAuthenticated, (req, res) => {
@@ -36,27 +42,26 @@ router.get('/register', checkNotAuthenticated, (req, res) => {
 router.post('/register', checkNotAuthenticated, async (req, res) => {
   try {
     const hashedPass = await bcrypt.hash(req.body.password, 10);
-    db.Users.create({
-      id: Date.now().toString(),
+    const userData = await db.Users.create({
       name: req.body.name,
       email: req.body.email,
       password: hashedPass,
     });
+    console.log(userData);
     res.redirect('/login');
   } catch {
     res.redirect('/register');
   }
-  console.log(db.Users);
 });
 
 //Ends session
 router.delete('/logout', (req, res, next) => {
   req.logOut((err) => {
-    if(err){
+    if(err) {
       return next(err);
     }
-    res.redirect('/login');
-  });  
+  res.redirect('/login');
+  });
 });
 
 //protect home route from not logged in users
