@@ -1,23 +1,4 @@
-//Creates start button variable
-const startbutton = document.getElementById('startbutton')
-
-
-
-//This leads you to the first page
-startbutton.addEventListener("click",startFirstLevel)
-
-
-
-
-function startFirstLevel (){
-    window.location.href="/dialoguepage"
-}
-
 var container = document.querySelector(".text");
-
-
-
-
 
 var speeds = {
    pause: 500, //Higher number = longer delay

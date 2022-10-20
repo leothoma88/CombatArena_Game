@@ -54,12 +54,21 @@ router.post('/register', checkNotAuthenticated, async (req, res) => {
   }
 });
 
+router.get('/dialogue', checkAuthenticated, (req, res) => {
+  res.render('dialoguepage.handlebars');
+});
+
+router.get('/combat', checkAuthenticated, (req, res) => {
+  res.render('combat.handlebars');
+});
+
 //Ends session
-router.delete('/logout', (req, res, next) => {
+router.get('/logout', (req, res, next) => {
   req.logOut((err) => {
     if(err) {
       return next(err);
     }
+  req.session = null;
   res.redirect('/login');
   });
 });

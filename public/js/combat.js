@@ -1,7 +1,7 @@
-//Makes buttons start the game
-const updateStr = require('./updateStrength');
-const getCharData = require('./getCharacterData');
-const getMonsterData = require('./getMonsterData');
+// //Makes buttons start the game
+// const updateStr = require('./updateStrength');
+// const getCharData = require('./getCharacterData');
+// const getMonsterData = require('./getMonsterData');
 
 const buttons = Array.from(document.querySelectorAll('button'));
 //Player health
@@ -14,9 +14,9 @@ const playerC = document.querySelector('.player-button-choice button');
 const overallResult = document.getElementById('TextBox');
 //Not using
 const computerC = document.querySelector('.computer-button-choice button');
-const compButtonF = document.querySelector('.box-right button.computer-fire');
-const compButtonW = document.querySelector('.box-right button.computer-water');
-const compButtonG = document.querySelector('.box-right button.computer-grass');
+const compButtonF = document.querySelector('.box-right button.computer-sword');
+const compButtonW = document.querySelector('.box-right button.computer-shield');
+const compButtonG = document.querySelector('.box-right button.computer-arrow');
 
 const restartID = document.getElementById('restart');
 const nextLevel=  document.getElementById('nextup');
@@ -24,9 +24,6 @@ const nextLevel=  document.getElementById('nextup');
 buttons.forEach(button => button.addEventListener('click', playGame));
 restartID.addEventListener("click",replayGame)
 nextLevel.addEventListener("click",dialoguePage)
-
-//Restartbutton
-
 
 let computerChoice = '';
 let playerChoice = '';
@@ -55,11 +52,11 @@ function selectChoice(e) {
         computerChoice = "Arrows";
     }
 
-    if (className === 'choice player-fire') {
+    if (className === 'choice player-sword') {
         playerChoice = "Sword";
-    } else if (className === 'choice player-water') {
+    } else if (className === 'choice player-shield') {
         playerChoice = "Shield";
-    } else if (className === 'choice player-grass') {
+    } else if (className === 'choice player-arrow') {
         playerChoice = "Arrows";
     }
 
@@ -75,6 +72,7 @@ function playGame(e) {
     selectChoice(e);
 
     if (playerHP.value !== 0 && computerHP.value !== 0) {
+        restartID.classList.add('hide')
         playRound();
     }
 
@@ -86,7 +84,6 @@ function playGame(e) {
     if (playerHP.value === 0) {
         overallResult.textContent = 'You Lost!';
         restartID.classList.remove('hide');
-
     }
 }
 
@@ -146,7 +143,6 @@ function replayGame() {
     playerHP.value = 100;
     computerHP.value =100;
     nextLevel.classList.add('hide')
-
 }
 
 //Does the damage
@@ -158,7 +154,7 @@ function damageHP(HP, damage) {
 //Gets us to next dialogue page
 function dialoguePage(){
     // window.location.replace("/dialoguepage");
-    window.location.replace("/dialoguepage.html")
+    window.location.replace("/")
 }
 
 
