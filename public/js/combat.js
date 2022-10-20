@@ -46,15 +46,6 @@ function selectChoice(e) {
     let compC;
     compC = computerPlay();
 
-    // resetSelection();
-
-    // if (computerC.className != '') {
-    //     computerC.className = '';
-    // }
-
-    // if (playerC.className !== '') {
-    //     playerC.className = '';
-    // }
 
     if (compC === "Sword") {
         computerChoice = "Sword";
@@ -154,10 +145,7 @@ function replayGame() {
     overallResult.textContent = '';
     playerHP.value = 100;
     computerHP.value =100;
-    
-
-
-    // resetSelection();
+    nextLevel.classList.add('hide')
 
 }
 
