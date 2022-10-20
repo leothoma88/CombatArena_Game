@@ -8,7 +8,7 @@ button {
 }
 
 .scenery{
-   background-image: url("/images/Arena_Background.jpg");
+   background-image: url("../images/Arena_Background.webp");
    width: 1000px;
    height: 559px;
    margin: auto;
