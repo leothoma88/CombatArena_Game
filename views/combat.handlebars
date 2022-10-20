@@ -1,48 +1,49 @@
-  <header class="display-5 text-center">BATTLE GAME ARENA</header>
+ <header class="display-5 text-center">BATTLE GAME ARENA</header>
     <main class="">
-        
-      <div class="health-container-player front" id="myProgress" style="top: 325px; left: 375px;">
-        <!-- <p class="health-container-text">HP:</p> -->
-        <progress id="myBar" class="player-health healthbar" value="100" max="100">
-        </progress>
-    </div>
-          <!-- <div id="myProgress2" class="front" style="top: 330px; left: 375px;">
-            <div id="myBar2">ATTACK</div>
-          </div> -->
-          
-        <img src="./images/Arena_Background.webp" class="mx-auto back" alt="Battlescreen">
-        <nav role="navigation" class="front" style="top: 360px; left: 200px;">
+        <div class="scenery">
+          <div class="gameaction">
+            
+            <div class="informational"  id="TextBox">ALL INFO WILL GO HERE ABOUT ATTACKS,DAMAGE DONE, AND WHICH CHARACTERS WINS.</div>
+        <div class="playingcharacter">
+          <div class="health-container-player" id="myProgress">
+            <progress id="myBar" class="player-health healthbar" value="100" max="100">
+            </progress>
+         </div>
+          <img src="./images/Character.jpeg" class="character" alt="characterplaceholder">
+        </div>
+        <div class="choices">
+          <nav role="navigation" >
             <ul>
               <li ><button class="choice player-fire">&#128481</button></li>
               <li ><button class="choice player-water">&#128737</button></li>
               <li ><button class="choice player-grass">&#127993</button></li>
             </ul>
           </nav>
-         <img src="./images/Character.jpeg" class="character" alt="characterplaceholder">
-         <img src="./images/kisspng-bloodborne-concept-art-enemy-character-5b15bbbd4a5206.4162723415281509733044.jpeg" class="enemy" alt="enemy">
-         <div class="health-container-computer front" id="myProgress" style="top: -210px; left: 760px;">
-          <!-- <p class="health-container-text">HP:</p> -->
-          <progress id="myBar" class="computer-health healthbar" value="100" max="100">
-          </progress>
-      <!-- </div>
-          <div id="myProgress2" class="front" style="top: -225px; left: 760px;">
-            <div id="myBar2">ATTACK</div>
-        </div> -->
-        <nav role="navigation" class="front" style="top: 35px; left: 150px; width: 130px;">
+          <nav role="navigation" id="enemychoice">
             <ul>
               <li><a>&#128481</a></li>
               <li><a >&#128737</a>
               <li><a >&#127993</a></li>
             </ul>
           </nav>
-          <div class="front informational" style="top:-440px; left: -230px" id="TextBox">ALL INFO WILL GO HERE ABOUT ATTACKS,DAMAGE DONE, AND WHICH CHARACTERS WINS.</div>
-          <a href="#" id="restart"  style="top: -120px;left: -190px;" class="next restart">Restart &raquo;</a>
-          <a href="#" style="top: -140px;left: 300px;" class="next">Next &raquo;</a>
-
+      </div>
+         <div class="enemycharacter">
+          <div class="health-container-computer " id="myProgress2"> 
+            <progress id="myBar" class="computer-health healthbar" value="100" max="100">
+           </progress>
         </div>
-          
-          
-          
+          <img src="./images/kisspng-bloodborne-concept-art-enemy-character-5b15bbbd4a5206.4162723415281509733044.jpeg" class="enemy" alt="enemy">
+        </div>
+        <div class="nextstep">
+          <a href="#" id="restart" class="next hide">Restart &raquo;</a>
+          <a href="#" id="nextup" class="next hide">Next &raquo;</a>
+        </div>
+        
+          </div>
+
+        
+      
+    </div>  
     </main>
     
 
