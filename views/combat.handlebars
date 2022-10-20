@@ -1,47 +1,72 @@
- <header class="display-5 text-center">COMBAT ARENA</header>
-    <main class="">
-        <div class="scenery">
-          <div class="gameaction">
-            
-            <div class="informational"  id="TextBox">A CHALLENGER HAS ENTERED THE ARENA, YOUR EYES MEET AND YOUR TEETH CLENCH. <br> CHOOSE YOUR ATTACK!</div>
-        <div class="playingcharacter">
-          <div class="health-container-player" id="myProgress">
-            <progress id="myBar" class="player-health healthbar" value="100" max="100">
-            </progress>
-         </div>
-          <img src="./images/Character.jpeg" class="character" alt="characterplaceholder">
+<header><h1 style='text-align: center;'>COMBAT ARENA</h1></header>
+<main class=''>
+  <div class='scenery'>
+    <div class='gameaction'>
+
+      <div class='informational' id='TextBox'>A CHALLENGER HAS ENTERED THE
+        ARENA, YOUR EYES MEET AND YOUR TEETH CLENCH.
+        <br />
+        CHOOSE YOUR ATTACK!</div>
+      <div class='playingcharacter'>
+        <div class='health-container-player' id='myProgress'>
+          <progress
+            id='myBar'
+            class='player-health healthbar'
+            value='100'
+            max='100'
+          >
+          </progress>
         </div>
-        <div class="choices">
-          <nav role="navigation" >
-            <ul>
-              <li ><button class="choice player-sword">🗡️</button></li>
-              <li ><button class="choice player-shield">🛡️</button></li>
-              <li ><button class="choice player-arrow">🏹</button></li>
-            </ul>
-          </nav>
+        <img
+          src='./images/Character.jpeg'
+          class='character'
+          alt='characterplaceholder'
+        />
       </div>
-         <div class="enemycharacter">
-          <div class="health-container-computer " id="myProgress2"> 
-            <progress id="myBar" class="computer-health healthbar" value="100" max="100">
-           </progress>
+      <div class='choices'>
+        <nav role='navigation'>
+          <ul>
+            <li><button class='choice player-sword'>🗡️</button></li>
+            <li><button class='choice player-shield'>🛡️</button></li>
+            <li><button class='choice player-arrow'>🏹</button></li>
+          </ul>
+        </nav>
+      </div>
+      <div class='enemycharacter'>
+        <div class='health-container-computer' id='myProgress2'>
+          <progress
+            id='myBar'
+            class='computer-health healthbar'
+            value='100'
+            max='100'
+          >
+          </progress>
         </div>
-          <img src="./images/kisspng-bloodborne-concept-art-enemy-character-5b15bbbd4a5206.4162723415281509733044.jpeg" class="enemy" alt="enemy">
-        </div>
-        <div class="nextstep">
-          <a href="#" id="restart" class="next hide">Restart &raquo;</a>
-          <a href="#" id="nextup" class="next hide">Next &raquo;</a>
-        </div>
-        
-          </div>
+        <img
+          src='./images/kisspng-bloodborne-concept-art-enemy-character-5b15bbbd4a5206.4162723415281509733044.jpeg'
+          class='enemy'
+          alt='enemy'
+        />
+      </div>
+      <div class='nextstep'>
+        <a href='#' id='restart' class='next hide'>Restart &raquo;</a>
+        <a href='#' id='nextup' class='next hide'>Next &raquo;</a>
+      </div>
 
-        
-      
-    </div>  
-    </main>
-    
+    </div>
 
+  </div>
+</main>
 
 <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-<script src="./js/combat.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+<script src='./js/combat.js'></script>
+<script
+  src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js'
+  integrity='sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3'
+  crossorigin='anonymous'
+></script>
+<script
+  src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js'
+  integrity='sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk'
+  crossorigin='anonymous'
+></script>

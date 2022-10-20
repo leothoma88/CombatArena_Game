@@ -19,158 +19,146 @@ const compButtonW = document.querySelector('.box-right button.computer-shield');
 const compButtonG = document.querySelector('.box-right button.computer-arrow');
 
 const restartID = document.getElementById('restart');
-const nextLevel=  document.getElementById('nextup');
+const nextLevel = document.getElementById('nextup');
 
-buttons.forEach(button => button.addEventListener('click', playGame));
-restartID.addEventListener("click",replayGame)
-nextLevel.addEventListener("click",dialoguePage)
+buttons.forEach((button) => button.addEventListener('click', playGame));
+restartID.addEventListener('click', replayGame);
+nextLevel.addEventListener('click', dialoguePage);
 
 let computerChoice = '';
 let playerChoice = '';
 
-
 function getRandomInt(max) {
-    return Math.floor(Math.random() * Math.floor(max));
+  return Math.floor(Math.random() * Math.floor(max));
 }
 
 function computerPlay() {
-    const choice = ["Sword", "Shield", "Arrows"];
-    return choice[getRandomInt(3)];
+  const choice = ['Sword', 'Shield', 'Arrows'];
+  return choice[getRandomInt(3)];
 }
 
 function selectChoice(e) {
-    const className = e.target.className;
-    let compC;
-    compC = computerPlay();
+  const className = e.target.className;
+  let compC;
+  compC = computerPlay();
 
+  if (compC === 'Sword') {
+    computerChoice = 'Sword';
+  } else if (compC === 'Shield') {
+    computerChoice = 'Shield';
+  } else if (compC === 'Arrows') {
+    computerChoice = 'Arrows';
+  }
 
-    if (compC === "Sword") {
-        computerChoice = "Sword";
-    } else if (compC === "Shield") {
-        computerChoice = "Shield";
-    } else if (compC === "Arrows") {
-        computerChoice = "Arrows";
-    }
+  if (className === 'choice player-sword') {
+    playerChoice = 'Sword';
+  } else if (className === 'choice player-shield') {
+    playerChoice = 'Shield';
+  } else if (className === 'choice player-arrow') {
+    playerChoice = 'Arrows';
+  }
 
-    if (className === 'choice player-sword') {
-        playerChoice = "Sword";
-    } else if (className === 'choice player-shield') {
-        playerChoice = "Shield";
-    } else if (className === 'choice player-arrow') {
-        playerChoice = "Arrows";
-    }
-
-    // playerC.className = className;
+  // playerC.className = className;
 }
 
-
 function playGame(e) {
-    if (playerHP.value <= 0 || computerHP.value <= 0) {
-        return;
-    }
+  if (playerHP.value <= 0 || computerHP.value <= 0) {
+    return;
+  }
 
-    selectChoice(e);
+  selectChoice(e);
 
-    if (playerHP.value !== 0 && computerHP.value !== 0) {
-        restartID.classList.add('hide')
-        playRound();
-    }
+  if (playerHP.value !== 0 && computerHP.value !== 0) {
+    restartID.classList.add('hide');
+    playRound();
+  }
 
-    if (computerHP.value === 0) {
-        overallResult.textContent = 'You Won!';
-        nextLevel.classList.remove('hide')
-
-    }
-    if (playerHP.value === 0) {
-        overallResult.textContent = 'You Lost!';
-        restartID.classList.remove('hide');
-    }
+  if (computerHP.value === 0) {
+    overallResult.textContent = 'You Won!';
+    nextLevel.classList.remove('hide');
+  }
+  if (playerHP.value === 0) {
+    overallResult.textContent = 'You Lost!';
+    restartID.classList.remove('hide');
+  }
 }
 
 function playRound() {
-
-    if (computerChoice === "Sword") {
-        switch (playerChoice) {
-            case "Sword":
-                showDrawResult();
-                break;
-            case "Shield":
-                showWinResult();
-                damageHP(computerHP, 20);
-                break;
-            case "Arrows":
-                showLoseResult();
-                damageHP(playerHP, 20);
-                break;
-        }
-    } else if (computerChoice === "Shield") {
-        switch (playerChoice) {
-            case "Shield":
-                showDrawResult();
-                break;
-            case "Arrows":
-                showWinResult();
-                damageHP(computerHP, 20);
-                break;
-            case "Sword":
-                showLoseResult();
-                damageHP(playerHP, 20);
-                break;
-        }
-    } else if (computerChoice === "Arrows") {
-        switch (playerChoice) {
-            case "Arrows":
-                showDrawResult();
-                break;
-            case "Sword":
-                showWinResult();
-                damageHP(computerHP, 20);
-                break;
-            case "Shield":
-                showLoseResult();
-                damageHP(playerHP, 20);
-                break;
-        }
+  if (computerChoice === 'Sword') {
+    switch (playerChoice) {
+      case 'Sword':
+        showDrawResult();
+        break;
+      case 'Shield':
+        showWinResult();
+        damageHP(computerHP, 20);
+        break;
+      case 'Arrows':
+        showLoseResult();
+        damageHP(playerHP, 20);
+        break;
     }
+  } else if (computerChoice === 'Shield') {
+    switch (playerChoice) {
+      case 'Shield':
+        showDrawResult();
+        break;
+      case 'Arrows':
+        showWinResult();
+        damageHP(computerHP, 20);
+        break;
+      case 'Sword':
+        showLoseResult();
+        damageHP(playerHP, 20);
+        break;
+    }
+  } else if (computerChoice === 'Arrows') {
+    switch (playerChoice) {
+      case 'Arrows':
+        showDrawResult();
+        break;
+      case 'Sword':
+        showWinResult();
+        damageHP(computerHP, 20);
+        break;
+      case 'Shield':
+        showLoseResult();
+        damageHP(playerHP, 20);
+        break;
+    }
+  }
 }
-
 
 //Restarts the game
 function replayGame() {
-    computerChoice = '';
-    playerChoice = '';
-    overallResult.textContent = '';
-    playerHP.value = 100;
-    computerHP.value =100;
-    nextLevel.classList.add('hide')
+  computerChoice = '';
+  playerChoice = '';
+  overallResult.textContent = '';
+  playerHP.value = 100;
+  computerHP.value = 100;
+  nextLevel.classList.add('hide');
 }
 
 //Does the damage
 function damageHP(HP, damage) {
-    HP.value -= damage;
-    return HP;
+  HP.value -= damage;
+  return HP;
 }
 
 //Gets us to next dialogue page
-function dialoguePage(){
-    // window.location.replace("/dialoguepage");
-    window.location.replace("/")
+function dialoguePage() {
+  // window.location.replace("/dialoguepage");
+  window.location.replace('/');
 }
 
-
-
-
 function showDrawResult() {
-    overallResult.textContent = `It's a Draw! Both of you chose ${playerChoice}`;
-    
+  overallResult.textContent = `It's a Draw! Both of you chose ${playerChoice}`;
 }
 
 function showWinResult() {
-    overallResult.textContent = `You Win! ${playerChoice} beats ${computerChoice}`
-    
+  overallResult.textContent = `You Win! ${playerChoice} beats ${computerChoice}`;
 }
 
 function showLoseResult() {
-    overallResult.textContent = `You Lose! ${computerChoice} beats ${playerChoice}`;
-    
+  overallResult.textContent = `You Lose! ${computerChoice} beats ${playerChoice}`;
 }
