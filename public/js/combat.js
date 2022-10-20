@@ -1,4 +1,8 @@
 //Makes buttons start the game
+const updateStr = require('./updateStrength');
+const getCharData = require('./getCharacterData');
+const getMonsterData = require('./getMonsterData');
+
 const buttons = Array.from(document.querySelectorAll('button'));
 //Player health
 const playerHP = document.querySelector('.player-health');
